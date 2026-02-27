@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { CVIProvider } from './components/cvi/components/cvi-provider'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Features from './components/Features'
@@ -20,7 +21,7 @@ function App() {
   }, []);
 
   return (
-    <>
+    <CVIProvider>
       <Navbar />
       <main>
         <Hero />
@@ -28,7 +29,7 @@ function App() {
         <About />
       </main>
       <Footer />
-    </>
+    </CVIProvider>
   )
 }
 

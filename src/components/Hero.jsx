@@ -1,12 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
+import CVI from './CVI'
 
 function Hero() {
-  const handleStartTour = () => {
-    alert(
-      "👋 Hi! I'm the NovaStack AI guide.\n\n" +
-      "In the full version, an AI avatar would appear here and explain the website in real time."
-    );
-  };
+  const [showCVI, setShowCVI] = useState(false)
 
   return (
     <section className="hero">
@@ -17,13 +13,36 @@ function Hero() {
           AI-powered workflows, and seamless integration.
         </p>
         <div className="hero-actions">
-          <button onClick={handleStartTour}>Start AI Tour</button>
+          <button onClick={() => setShowCVI(true)}>Start AI Tour</button>
           <button className="secondary-btn">View Docs</button>
         </div>
       </div>
 
-      <div className="avatar-placeholder">
-        <p>AI Avatar Placeholder</p>
+      <div className="avatar-placeholder" style={{ position: 'relative' }}>
+        {showCVI ? (
+          <>
+            <button
+              onClick={() => setShowCVI(false)}
+              style={{
+                position: 'absolute',
+                top: '12px',
+                right: '12px',
+                padding: '0.4rem 0.8rem',
+                backgroundColor: '#ef4444',
+                color: 'white',
+                border: 'none',
+                borderRadius: '6px',
+                cursor: 'pointer',
+                zIndex: 2,
+              }}
+            >
+              Close
+            </button>
+            <CVI />
+          </>
+        ) : (
+          <p>AI Avatar Placeholder</p>
+        )}
       </div>
     </section>
   )
